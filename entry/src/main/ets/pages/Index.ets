@@ -1,5 +1,6 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+
+import { getUrl } from 'libentry.so';
 
 @Entry
 @Component
@@ -14,14 +15,20 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            hilog.info(0x0000, 'testTag', 'Test URL: %{public}s', testNapi.getUrl("sfd"));
+            hilog.info(0x0000, 'testTag', 'Test URL: %{public}s', getUrl("https://192.168.20.141/_/rweb/realms"));
           })
-
+        Button('test socket')
+          .fontSize(30)
+          .onClick(() => {
+            getUrl("https://192.168.20.141/_/rweb/realms");
+            // hilog.info(0x0000, 'testTag', 'Test URL: %{public}s', testNapi.getUrl("https://192.168.20.141/_/rweb/realms"));
+          })
+          .width('100%')
         // 按钮组件
         Button('Click Me')
           .fontSize(30)
           .onClick(() => {
-            hilog.info(0x0000, 'buttonTag', 'Test NAPI 5 + 7 = %{public}d', testNapi.add(5, 7));
+            // hilog.info(0x0000, 'buttonTag', 'Test NAPI 5 + 7 = %{public}d', add(5, 7));
           })
           .width('100%')
       }

@@ -7,6 +7,8 @@
 #ifndef TESTPROJECT_HELLO_H
 #define TESTPROJECT_HELLO_H
 #include <vector>
+#include <string>
+#include <iostream>
 #include "napi/native_api.h"
 
 napi_value get_URL(napi_env env, napi_callback_info info);
