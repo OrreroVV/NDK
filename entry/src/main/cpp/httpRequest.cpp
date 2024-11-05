@@ -277,7 +277,7 @@ void HttpRequest::send_http_request(std::string url, std::string cookie, Request
     OH_LOG_INFO(LogType::LOG_APP, "connect_socket success");
 //     SSL_CTX_set_options(ctx, SSL_OP_NO_TLSv1 | SSL_OP_NO_TLSv1_1 | SSL_OP_NO_TLSv1_2 |  SSL_OP_NO_SSLv2 | SSL_OP_NO_SSLv3);
     
-    SSL_CTX_set_cipher_list(ctx, "ALL:!ECDHE-SM4-SM3:!ECC-SM1-SM3:!ECDHE-SM1-SM3"); // ECC-SM4-SM3  ALL:!ECDHE-SM4-SM3:!ECC-SM1-SM3:!ECDHE-SM1-SM3
+//     SSL_CTX_set_cipher_list(ctx, "ALL:!ECDHE-SM4-SM3:!ECC-SM1-SM3:!ECDHE-SM1-SM3"); // ECC-SM4-SM3  ALL:!ECDHE-SM4-SM3:!ECC-SM1-SM3:!ECDHE-SM1-SM3
     SSL* ssl = SSL_new(ctx);
     SSL_set_fd(ssl, sockfd);
     int ret = uy_sslconnect_until(sockfd, ssl); // 调用 SSL_connect

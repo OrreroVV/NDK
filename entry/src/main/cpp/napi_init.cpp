@@ -1,12 +1,10 @@
 #include "napi/native_api.h"
-#include "cusSum.h"
 #include "hello.h"
 
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        { "add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "getUrl", nullptr, get_URL, nullptr, nullptr, nullptr, napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

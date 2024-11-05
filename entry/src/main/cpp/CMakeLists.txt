@@ -39,7 +39,6 @@ set(OPENSSL_DIR ${NATIVERENDER_ROOT_PATH}/ohos-openssl/prelude/${OHOS_ARCH}/lib)
 set(LIB_SRC
     napi_init.cpp
     hello.cpp
-    cusSum.cpp
     httpRequest.cpp
     )
 
@@ -60,5 +59,5 @@ add_library(entry SHARED ${LIB_SRC})
 
 
 
-target_link_libraries(entry PUBLIC libace_napi.z.so ${OPENSSL_DIR}/libssl.so ${OPENSSL_DIR}/libcrypto.so  libhilog_ndk.z.so libohhidebug.so)
+target_link_libraries(entry PUBLIC libace_napi.z.so ${OPENSSL_DIR}/libssl.a ${OPENSSL_DIR}/libcrypto.a  libhilog_ndk.z.so libohhidebug.so)
 #target_link_libraries(entry PUBLIC ${LIB_LIB})

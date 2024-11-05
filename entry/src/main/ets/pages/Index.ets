@@ -15,12 +15,12 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            hilog.info(0x0000, 'testTag', 'Test URL: %{public}s', getUrl("https://192.168.20.141/_/rweb/realms"));
+            hilog.info(0x0000, 'testTag', 'Test URL: %{public}s', getUrl("https://10.0.16.141/_/rweb/realms"));
           })
         Button('test socket')
           .fontSize(30)
           .onClick(() => {
-            getUrl("https://192.168.20.141/_/rweb/realms");
+            getUrl("https://10.0.16.141/_/rweb/realms");
             // hilog.info(0x0000, 'testTag', 'Test URL: %{public}s', testNapi.getUrl("https://192.168.20.141/_/rweb/realms"));
           })
           .width('100%')
