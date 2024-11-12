@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
 set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -21,20 +22,10 @@ if(DEFINED PACKAGE_FIND_FILE)
 endif()
 
 include_directories(${NATIVERENDER_ROOT_PATH}
-                    ${NATIVERENDER_ROOT_PATH}/include)
-
-
-## 设置 OpenSSL 库路径
-#if(${OHOS_ARCH} STREQUAL "arm64-v8a")
-#    set(OPENSSL_DIR ../ohos-openssl)
-#elseif(${OHOS_ARCH} STREQUAL "armeabi-v7a")
-#    set(OPENSSL_DIR $ENV{ARMV7_UNKNOWN_LINUX_OHOS_OPENSSL_DIR})
-#elseif(${OHOS_ARCH} STREQUAL "x86_64")
-#    set(OPENSSL_DIR $ENV{X86_64_UNKNOWN_LINUX_OHOS_OPENSSL_DIR})
-#endif()
-
-set(OPENSSL_DIR ${NATIVERENDER_ROOT_PATH}/ohos-openssl/prelude/${OHOS_ARCH}/lib)
-
+                    ${NATIVERENDER_ROOT_PATH}/include
+#                    ${NATIVERENDER_ROOT_PATH}/3rd/libcurl/include
+                    ${NATIVERENDER_ROOT_PATH}/3rd/openssl/include
+                    )
 
 set(LIB_SRC
     napi_init.cpp
@@ -46,18 +37,17 @@ set(LIB_SRC
 
 add_library(entry SHARED ${LIB_SRC})
 
-#set(LIB_LIB
-#    ${NATIVERENDER_ROOT_PATH}/../../../libs/${OHOS_ARCH}/openssl/openssl.a
-##    ${NATIVERENDER_ROOT_PATH}/../../../libs/${OHOS_ARCH}/openssl/libssl.a
-#)
-#
-#add_library(openssl_3 SHARED IMPORTED)
-#set_target_properties(openssl_3
-#    PROPERTIES
-#    IMPORTED_LOCATION ${NATIVERENDER_ROOT_PATH}/../../../libs/${OHOS_ARCH}/openssl/openssl.a
-#)
-
-
-
-target_link_libraries(entry PUBLIC libace_napi.z.so ${OPENSSL_DIR}/libssl.a ${OPENSSL_DIR}/libcrypto.a  libhilog_ndk.z.so libohhidebug.so)
+set(ZLIB_DIR ${NATIVERENDER_ROOT_PATH}/3rd/zlib/lib/${OHOS_ARCH})
+set(LIBCURL_DIR ${NATIVERENDER_ROOT_PATH}/3rd/libcurl/lib/${OHOS_ARCH})
+set(OPENSSL_DIR ${NATIVERENDER_ROOT_PATH}/3rd/openssl/lib/${OHOS_ARCH})
+target_link_libraries(entry PUBLIC
+    libace_napi.z.so
+    libhilog_ndk.z.so
+    libohhidebug.so
+#    ${ZLIB_DIR}/libz.a
+#    ${LIBCURL_DIR}/libcurl.a
+    ${OPENSSL_DIR}/openssl_gm.a
+#    ${OPENSSL_DIR}/libssl.a
+#    ${OPENSSL_DIR}/libcrypto.a
+)
 #target_link_libraries(entry PUBLIC ${LIB_LIB})

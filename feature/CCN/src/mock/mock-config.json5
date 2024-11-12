@@ -1,0 +1,5 @@
+{
+  "libccn.so": {
+    "source": "src/mock/Libccn.mock.ets"
+  }
+}

@@ -12,6 +12,6 @@
 #include "napi/native_api.h"
 
 napi_value get_URL(napi_env env, napi_callback_info info);
-
+napi_value native_setFd(napi_env env, napi_callback_info info);
 
 #endif //TESTPROJECT_HELLO_H

@@ -1,6 +1,20 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\panpan\\.ohos\\config\\default_TestProject_AiidFUlBQPLkPRcbB7ZN53ew43xIjYU8-8sEb-hGPMo=.cer",
+          "storePassword": "0000001BB70A3D4B880EA1CC44147CCF8488B5214A8DE6D08693FE83AD31CD2723D1F1379D4980FBC6A728",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BB5B54E9E964778401637D40D5744F6BEBD36DC65166B27A34D5BCFEA49240C1E1AF37005F75CF5",
+          "profile": "C:\\Users\\panpan\\.ohos\\config\\default_TestProject_AiidFUlBQPLkPRcbB7ZN53ew43xIjYU8-8sEb-hGPMo=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\panpan\\.ohos\\config\\default_TestProject_AiidFUlBQPLkPRcbB7ZN53ew43xIjYU8-8sEb-hGPMo=.p12"
+        }
+      }
+    ],
     "products": [
       {
         "name": "default",
@@ -9,7 +23,8 @@
         "runtimeOS": "HarmonyOS",
         "buildOption": {
           "strictMode": {
-            "caseSensitiveCheck": true
+            "caseSensitiveCheck": true,
+            //            "useNormalizedOHMUrl": false
           }
         }
       }
@@ -27,6 +42,18 @@
     {
       "name": "entry",
       "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCN",
+      "srcPath": "./feature/CCN",
       "targets": [
         {
           "name": "default",

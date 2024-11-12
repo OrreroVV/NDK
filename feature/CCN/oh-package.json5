@@ -1,0 +1,11 @@
+{
+  "name": "ccn",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "libccn.so": "file:./src/main/cpp/types/libccn"
+  }
+}

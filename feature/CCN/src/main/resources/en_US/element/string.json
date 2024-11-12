@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "CCNAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "CCNAbility_label",
+      "value": "label"
+    }
+  ]
+}

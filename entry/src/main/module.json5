@@ -47,6 +47,11 @@
     ],
     "extensionAbilities": [
       {
+        "name": "MyVpnExtAbility",
+        "srcEntry": "./ets/myvpnextability/MyVpnExtAbility.ets",
+        "type": "vpn"
+      },
+      {
         "name": "EntryBackupAbility",
         "srcEntry": "./ets/entrybackupability/EntryBackupAbility.ets",
         "type": "backup",

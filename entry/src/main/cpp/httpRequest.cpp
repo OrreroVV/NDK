@@ -11,7 +11,10 @@
 #include <fcntl.h>
 #include <cstdlib>
 #include "hilog/log.h"
-
+#include <openssl/ssl.h>
+#include <openssl/err.h>
+#include <openssl/opensslv.h>
+#include <openssl/x509v3.h>
 #undef LOG_DOMAIN 
 #undef LOG_TAG 
 #define LOG_DOMAIN 0x3200 // 全局domain宏，标识业务领域 
@@ -208,9 +211,9 @@ int uy_sslconnect_until(int fd, SSL *ssl)
             OH_LOG_INFO(LogType::LOG_APP, "SSL_get_error: %{public}d", sslerr);
             switch (sslerr) {
                 case SSL_ERROR_WANT_READ:
-//                     FD_CLR(fd, &wset);
-//                     FD_SET(fd, &rset); 
-//                     FD_SET(fd, &eset);
+                    FD_CLR(fd, &wset);
+                    FD_SET(fd, &rset); 
+                    FD_SET(fd, &eset);
                     break;
 
                 case SSL_ERROR_WANT_WRITE:
@@ -240,11 +243,11 @@ void HttpRequest::send_http_request(std::string url, std::string cookie, Request
 //     url = "https://www.baidu.com";
     
     OH_LOG_INFO(LogType::LOG_APP, "send_http_request");
-    SSL_library_init();
-    OpenSSL_add_all_algorithms();
-    SSL_load_error_strings();
+//     SSL_library_init();
+//     OpenSSL_add_all_algorithms();
+//     SSL_load_error_strings();
     
-    SSL_CTX* ctx = SSL_CTX_new(SSLv23_client_method());
+    SSL_CTX* ctx = SSL_CTX_new(SSLv23_method());
     if (ctx == nullptr) {
         ERR_print_errors_fp(stderr);
         exit(EXIT_FAILURE);
@@ -274,9 +277,8 @@ void HttpRequest::send_http_request(std::string url, std::string cookie, Request
         return;
     }    
     
-    OH_LOG_INFO(LogType::LOG_APP, "connect_socket success");
+    OH_LOG_INFO(LogType::LOG_APP, "connect_socket success%{public}d", sockfd);
 //     SSL_CTX_set_options(ctx, SSL_OP_NO_TLSv1 | SSL_OP_NO_TLSv1_1 | SSL_OP_NO_TLSv1_2 |  SSL_OP_NO_SSLv2 | SSL_OP_NO_SSLv3);
-    
 //     SSL_CTX_set_cipher_list(ctx, "ALL:!ECDHE-SM4-SM3:!ECC-SM1-SM3:!ECDHE-SM1-SM3"); // ECC-SM4-SM3  ALL:!ECDHE-SM4-SM3:!ECC-SM1-SM3:!ECDHE-SM1-SM3
     SSL* ssl = SSL_new(ctx);
     SSL_set_fd(ssl, sockfd);
