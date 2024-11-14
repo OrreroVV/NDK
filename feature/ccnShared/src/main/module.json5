@@ -1,13 +1,14 @@
 {
   "module": {
-    "name": "entry_test",
-    "type": "feature",
+    "name": "ccnShared",
+    "type": "shared",
+    "description": "$string:shared_desc",
     "deviceTypes": [
       "phone",
       "tablet",
       "2in1"
     ],
     "deliveryWithInstall": true,
-    "installationFree": false
+    "pages": "$profile:main_pages"
   }
 }

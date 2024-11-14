@@ -23,6 +23,13 @@
         "startWindowBackground": "$color:start_window_background",
         "exported": true
       }
+    ],
+    "extensionAbilities": [
+      {
+        "name": "MyVpnExtAbility",
+        "srcEntry": "./ets/myvpnextability/MyVpnExtAbility.ets",
+        "type": "vpn"
+      }
     ]
   }
 }

@@ -3,11 +3,57 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { common, Want } from '@kit.AbilityKit';
 import { vpnExtension, http } from '@kit.NetworkKit';
 
+class Address {
+  address: string;
+  family: number;
+
+  constructor(address: string, family: number) {
+    this.address = address;
+    this.family = family;
+  }
+}
+
+class AddressWithPrefix {
+  address: Address;
+  prefixLength: number;
+
+  constructor(address: Address, prefixLength: number) {
+    this.address = address;
+    this.prefixLength = prefixLength;
+  }
+}
+
+
+class Config {
+  addresses: AddressWithPrefix[];
+  mtu: number;
+  dnsAddresses: string[];
+  trustedApplications: string[];
+  blockedApplications: string[];
+
+  constructor(
+    tunIp: string,
+    blockedAppName: string
+  ) {
+    this.addresses = [
+      new AddressWithPrefix(new Address(tunIp, 1), 24)
+    ];
+    this.mtu = 1400;
+    this.dnsAddresses = ["114.114.114.114"];
+    this.trustedApplications = [];
+    this.blockedApplications = [blockedAppName];
+  }
+}
+
+
 let context = getContext(this) as common.VpnExtensionContext;
 let want: Want = {
   deviceId: "",
   bundleName: "com.example.testproject",
   abilityName: "MyVpnExtAbility",
+  parameters: {
+    vpnConfig: new Config("", "")
+  }
 };
 
 
@@ -18,7 +64,6 @@ class Header {
     this.contentType = contentType;
   }
 }
-
 
 
 

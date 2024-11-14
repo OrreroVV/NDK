@@ -40,8 +40,8 @@
   },
   "modules": [
     {
-      "name": "entry",
-      "srcPath": "./entry",
+      "name": "default",
+      "srcPath": "./product/default",
       "targets": [
         {
           "name": "default",
@@ -54,6 +54,18 @@
     {
       "name": "CCN",
       "srcPath": "./feature/CCN",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ccnShared",
+      "srcPath": "./feature/ccnShared",
       "targets": [
         {
           "name": "default",

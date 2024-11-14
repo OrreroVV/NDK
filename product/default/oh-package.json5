@@ -1,5 +1,5 @@
 {
-  "name": "entry",
+  "name": "default",
   "version": "1.0.0",
   "description": "Please describe the basic information.",
   "main": "",
@@ -7,5 +7,6 @@
   "license": "",
   "dependencies": {
     "libentry.so": "file:./src/main/cpp/types/libentry",
+//    "@ohos/ccnshared": "file:../../feature/ccnShared"
   }
 }

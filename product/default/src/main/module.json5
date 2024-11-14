@@ -1,6 +1,6 @@
 {
   "module": {
-    "name": "entry",
+    "name": "default",
     "type": "entry",
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
@@ -18,7 +18,7 @@
       },
       {
         "name": "ohos.permission.SET_NETWORK_INFO"
-      },
+      }
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -47,11 +47,6 @@
     ],
     "extensionAbilities": [
       {
-        "name": "MyVpnExtAbility",
-        "srcEntry": "./ets/myvpnextability/MyVpnExtAbility.ets",
-        "type": "vpn"
-      },
-      {
         "name": "EntryBackupAbility",
         "srcEntry": "./ets/entrybackupability/EntryBackupAbility.ets",
         "type": "backup",
@@ -61,7 +56,7 @@
             "name": "ohos.extension.backup",
             "resource": "$profile:backup_config"
           }
-        ],
+        ]
       }
     ]
   }
